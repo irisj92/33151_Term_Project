@@ -1,8 +1,6 @@
 from math import *
 from vpython import *
 
-## Eli
-
 ## Constants
 G = 6.6741e-11
 
@@ -24,8 +22,13 @@ def updateForces(celestials):
         otherBodies = [celestials[a] for a in celestials if a != celestial]
         celestials[celestial].force = netForce(celestial, otherBodies)
 
-def updateMomenta(celestials):
-    return
+def updateMomenta(celestials, dt):
+    for celestial in celestials:
+        celestial.mom = celestial.force * dt
+
+def updatePosition(celestials, dt):
+    for celestial in celestials:
+        celestial.pos = (celestial.mom * dt)/celestial.mass
 
 ## Create sphere object
 def createSphere (data, planetColor):
@@ -54,5 +57,11 @@ while time < end:
     time += dt
     ## force on each body
     updateForces(celestials)
-    # updateMomenta(celestials)
-    # updatePositions(celestials)
+
+    ## There might be some finicky syntax with .mom and .pos for the sphere objects,
+    ## I'm not sure
+
+    ## update each body's momentum
+    updateMomenta(celestials, dt)
+    ## update each body's position
+    updatePositions(celestials, dt)
