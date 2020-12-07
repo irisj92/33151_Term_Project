@@ -1,12 +1,14 @@
 from math import *
 from vpython import *
 
+## Eli
+
 ## Constants
 G = 6.6741e-11
 
 ## force function, 1 on 2
-def force(part1,part2): 
-    force = -G*(part1.mass*part2.mass)/(mag(part2.pos - part1.pos)**2)*norm(part2.pos - part1.pos)
+def force(body1, body2): 
+    force = -G*(body1.mass*body2.mass)/(mag2(body2.pos - body1.pos))*norm(body2.pos - body1.pos)
     return force
 
 ## net force on part1 (is there a simpler way to do this?)
