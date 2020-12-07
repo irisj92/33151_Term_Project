@@ -1,6 +1,8 @@
 from math import *
 from vpython import *
 
+## Eli
+
 ## Constants
 G = 6.6741e-11
 
