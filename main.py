@@ -38,7 +38,7 @@ celestialFile = open("data.txt", "r")
 
 celestials = {}
 
-# Creates array of sphere objects with relevant data
+# Creates array of sphere objects with [body, mass, radius, distance from sun, speed]
 for line in celestialFile.readlines():
     data = line.split(",")
     celestials[data[0]] = createSphere([float(i) for i in data[1:]], color.magenta)
