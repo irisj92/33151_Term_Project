@@ -19,10 +19,13 @@ def netForce(source, *argv):
     return netForce
 
 ## Updates forces of all celestials
-def updateForces (celestials):
+def updateForces(celestials):
     for celestial in celestials:
         otherBodies = [celestials[a] for a in celestials if a != celestial]
         celestials[celestial].force = netForce(celestial, otherBodies)
+
+def updateMomenta(celestials):
+    return
 
 ## Create sphere object
 def createSphere (data, planetColor):
@@ -54,3 +57,5 @@ while time < end:
     time += dt
     ## force on each body
     updateForces(celestials)
+    # updateMomenta(celestials)
+    # updatePositions(celestials)
