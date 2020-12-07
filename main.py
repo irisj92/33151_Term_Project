@@ -43,6 +43,8 @@ for line in celestialFile.readlines():
     data = line.split(",")
     celestials[data[0]] = createSphere([float(i) for i in data[1:]], color.magenta)
 
+celestialFile.close()
+
 time = 0
 end = 0
 dt = 36000
