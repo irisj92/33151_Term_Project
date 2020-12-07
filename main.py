@@ -37,16 +37,13 @@ def createSphere (data, planetColor):
     
     return obj
 
-celestialFile = open("data.txt", "r")
-
 celestials = {}
 
-# Creates array of sphere objects with [body, mass, radius, distance from sun, speed]
-for line in celestialFile.readlines():
-    data = line.split(",")
-    celestials[data[0]] = createSphere([float(i) for i in data[1:]], color.magenta)
-
-celestialFile.close()
+# Creates array of sphere objects with relevant data
+with open("data.txt", "r") as celestialFile:
+    for line in celestialFile.readlines():
+        data = line.split(",")
+        celestials[data[0]] = createSphere([float(i) for i in data[1:]], color.magenta)
 
 time = 0
 end = 0
